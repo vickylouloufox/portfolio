@@ -1209,10 +1209,10 @@ h1, h2, h3, h4 {
 .site-footer {
   background: #6BFD00;
   color: #000;
-  padding: var(--s-4) 0;
-  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
+  padding: var(--s-6) 0;
+  padding-bottom: calc(var(--s-6) + env(safe-area-inset-bottom));
   font-family: var(--font-sans);
-  font-size: var(--fs-small);
+  font-size: var(--fs-body);
 }
 .site-footer__inner {
   max-width: var(--container-max);
