@@ -1078,7 +1078,6 @@ h1, h2, h3, h4 {
 
 .reading-section {
   padding: 0;
-  margin-bottom: var(--s-8);
 }
 .reading-section .container {
   background: #FFFF04;
@@ -1208,14 +1207,33 @@ h1, h2, h3, h4 {
 .footer__bottom a:hover { color: var(--accent); }
 
 .site-footer {
-  background: var(--ink);
-  color: var(--cream);
-  margin-top: clamp(64px, 10vw, 120px);
-  padding: var(--s-6) 0;
-  padding-bottom: calc(var(--s-6) + env(safe-area-inset-bottom));
+  background: #6BFD00;
+  color: #000;
+  padding: var(--s-4) 0;
+  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
   font-family: var(--font-sans);
   font-size: var(--fs-small);
-  text-align: center;
+}
+.site-footer__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+}
+.site-footer__links {
+  display: flex;
+  gap: var(--s-5);
+  align-items: center;
+}
+.site-footer__link {
+  color: #000;
+  text-decoration: none;
+}
+.site-footer__link:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Case study pages ---------- */
