@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Little Desk — Victoria Fox</title>
+  <meta name="description"
+    content="From idea to launch: designing and shipping a children's learning app with Cursor AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+  <style>
+    @font-face {
+      font-family: 'Roslindale Display';
+      src: url('RoslindaleVariable-VF[Display]-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=14" />
+</head>
+
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Victoria Fox — back to home">VF</a>
+      <div class="nav__right">
+        <a href="mailto:vickyloufox@gmail.com" class="nav__link" data-copy-email>Email</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title + tags -->
+  <section class="section section--sl" style="padding-bottom:0">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label">
+          <a href="index.html#work" class="cs-back">← Work</a>
+        </div>
+        <div class="sl__body">
+          <div class="cs-tags">
+            <span class="wtag wtag--sector">Education</span><span class="wtag wtag--zero-to-one">0→1</span><span
+              class="wtag wtag--ios">iOS</span><span class="wtag wtag--b2c">B2C</span>
+          </div>
+          <h1 class="cs-title t-title">From idea to launch: designing and shipping a children's learning app with Cursor
+            AI.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover image -->
+  <div class="cs-cover">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label"></div>
+        <div class="sl__body">
+          <div class="cs-cover__img">
+            <img src="ld-cover.jpg"
+              alt="A child writing spelling words by hand at a kitchen table, with Little Desk open on a laptop beside her."
+              style="width:100%;display:block;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview + Stats -->
+  <section class="section section--sl" style="padding-top:var(--s-6)">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <p class="about__lead">Little Desk started with a Monday morning observation: my daughter was resistant to her
+            weekly spelling homework. So I built her something better — and used it as an excuse to go deep on what it
+            actually means to ship an app with AI.</p>
+          <p>The market for children's learning apps is dominated by the Duolingo model: streaks, rewards, loss
+            aversion, progress bars. These mechanics are addictive by design — and for young children, potentially
+            counterproductive. The brief I set myself: an app that is calm, not addictive. One that treats the child as
+            capable rather than in need of reward. And one that keeps pencil to paper — because the act of writing by
+            hand
+            is the point and not something to replace with a touchscreen.</p>
+          <div class="stat-bar" style="margin-top:var(--s-7)">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">6</span>
+              <span class="stat-bar__label">Weekly sprints</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">Flutter</span>
+              <span class="stat-bar__label">Web · iOS · Android</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">0→1</span>
+              <span class="stat-bar__label">Concept to working app</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">Beta</span>
+              <span class="stat-bar__label">Testing · coming soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The brief -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">A different kind of learning app</h2>
+          <p>Three bodies of research shaped my product thinking from the start. 1 – Growth mindset, which says that
+            evaluative feedback actually reduces resilience after errors. 2 - Cognitive
+            load theory proposes that young children have limited working memory and are especially vulnerable to visual
+            noise. 3 - Self-determination theory, which suggests
+            that external pressure shifts motivation from autonomy to compliance.</p>
+
+          <p>A parent survey I ran at the outset confirmed the tension: parents worried equally about
+            screen time and about their children's motivation to learn.
+          </p>
+
+          <figure class="cs-figure">
+            <img src="ld-survey-findings.png"
+              alt="Survey results showing parent responses to questions about homework habits, screen time, and learning apps."
+              style="width:100%;display:block;">
+            <figcaption>Parent survey responses, run before building began. Parents worried equally about screen time
+              and about motivation — and most were already using learning apps they weren't happy with.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Building it -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Directing AI to build</h2>
+          <p>I directed Cursor to write the app in Flutter and embedded my UX principles document directly into Cursor
+            as a rules files, so that every code generation aligned with the overriding design
+            rationale. I also encoded the linguistic rules for phoneme mapping as Cursor rules — so adding new words to
+            the
+            curriculum meant generating the correct grapheme-to-phoneme breakdown automatically.</p>
+          <p>I worked in weekly sprints — one hypothesis per sprint, live testing after each one. I also worked
+            alongside an engineer partner, from whom I learned a significant amount about both the tooling and the
+            process.</p>
+
+          <figure class="cs-figure">
+            <img src="ld-dev-setup.png"
+              alt="Split screen showing the Little Desk sign-in screen alongside a terminal running Flutter in debug mode."
+              style="width:100%;display:block;">
+            <figcaption>Early development: the sign-in screen running alongside the Flutter terminal.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What the sprints taught me -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">What real testing surfaces</h2>
+          <p>Testing with a real child on school mornings, surfaces things no process
+            anticipates. Hardware logistics, font choices, the sequencing of a single button. Each sprint produced
+            issues that I could address for the next version.</p>
+
+          <figure class="cs-figure">
+            <img src="ld-handwriting-setup.png"
+              alt="Handwritten spelling words on paper beside a laptop showing the app's photo upload screen."
+              style="width:100%;display:block;">
+            <figcaption>The hybrid format in use: the app teaches and analyses what the child writes whilst avoiding
+              judgemental feedback.</figcaption>
+          </figure>
+
+          <p>The testing revealed friction points, issues with the pacing, and moments where the
+            child's behaviour diverged from what I'd expected. The value of the sprint structure was in the rhythm — one
+            hypothesis per
+            week, tested under real conditions, revised before the next Monday. "I love doing my spellings now" arrived
+            on day two. That's the signal that made five more weeks of iteration worth it.</p>
+
+          <figure class="cs-figure">
+            <img src="ld-tablet-photo.png"
+              alt="A child sitting on a tiled floor, photographing her handwritten spelling words with a tablet."
+              style="width:100%;display:block;">
+            <figcaption>Sprint 2 moved to tablet after the phone-as-camera created friction.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App showcase -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">The app in use</h2>
+          <div class="cs-figure__placeholder">Video · Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where it is now -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Live with one user. More coming.</h2>
+          <p>The app has been in weekly use since January 2026. The engagement shift compared to paper-only practice was
+            immediate — "I love doing my spellings now" arrived within 24 hours of first use. Whether that enthusiasm
+            holds over time is what the next phase of testing is for.</p>
+          <div class="stat-bar" style="grid-template-columns: repeat(2, 1fr); margin-top: var(--s-6);">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">[X]+</span>
+              <span class="stat-bar__label">Words in the curriculum</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">Beta</span>
+              <span class="stat-bar__label">Testers · coming soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js?v=2"></script>
+  <footer class="site-footer">© Victoria Fox</footer>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On Deck — Victoria Fox</title>
+  <meta name="description" content="Migrating 100k members: designing a segmented upgrade flow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+  <style>
+    @font-face {
+      font-family: 'Roslindale Display';
+      src: url('RoslindaleVariable-VF[Display]-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=14" />
+</head>
+
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Victoria Fox — back to home">VF</a>
+      <div class="nav__right">
+        <a href="mailto:vickyloufox@gmail.com" class="nav__link" data-copy-email>Email</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title + tags -->
+  <section class="section section--sl" style="padding-bottom:0">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label">
+          <a href="index.html#work" class="cs-back">← Work</a>
+        </div>
+        <div class="sl__body">
+          <div class="cs-tags">
+            <span class="wtag wtag--sector">Community</span><span class="wtag wtag--growth">Growth</span><span
+              class="wtag wtag--web">Web</span><span class="wtag wtag--b2c">B2C</span>
+          </div>
+          <h1 class="cs-title t-title">Migrating 100k members: designing a segmented upgrade flow.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover image -->
+  <div class="cs-cover">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label"></div>
+        <div class="sl__body">
+          <div class="cs-cover__img">
+            <img src="OnDeck-Thumb-2.jpg" alt="On Deck migration flow" class="case-card__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview + Stats -->
+  <section class="section section--sl" style="padding-top:var(--s-6)">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <p class="about__lead">On Deck's entire value proposition rested on its community — the peer connections,
+            introductions, and shared context that made membership worth having. As the platform scaled past 100,000
+            members, that value was at risk: outreach between members was declining, and the profile page — the primary
+            mechanism for discovery and connection — had stopped doing its job.</p>
+          <p>I joined as Lead Product Designer in April 2021 and moved into a Product Design Manager role a year later,
+            growing the design team from two to five as the company invested in solving the problem properly. What
+            followed was one of the more complex projects of my time there: a full profile redesign and a segmented
+            migration strategy to bring the entire user base onto the new data structure without breaking trust.</p>
+          <div class="stat-bar"
+            style="margin-top:var(--s-7); grid-template-columns: repeat(2, auto); justify-content: start">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">100k+</span>
+              <span class="stat-bar__label">Community members</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">2→5</span>
+              <span class="stat-bar__label">Design team growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Profile redesign -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">When the profile page stopped working.</h2>
+          <p>Engagement data from Mixpanel and in-person user interviews pointed to the same problem: the profile page
+            had lost its utility. Users couldn't tell who was still active on the platform. That ambiguity eroded trust
+            — if you can't gauge whether someone is likely to respond, you don't reach out.</p>
+
+          <p>The central addition was an activity feed. Surfacing a member's recent platform activity served as social
+            proof of presence — a live signal that the profile was current and its owner was engaged. For the profile
+            holder, it created a sense of ownership and investment in the page. For members browsing the community, it
+            opened up a secondary entry point into content, sessions, and playlists.</p>
+
+          <figure class="cs-figure">
+            <img src="OD-Profile-Overview.png" alt="On Deck profile overview" class="case-card__img">
+            <figcaption>The redesigned profile page, showing the dashboard view and member overview.</figcaption>
+          </figure>
+
+          <div class="cs-figure-pair">
+            <figure class="cs-figure">
+              <img src="OD-Sessions.png" alt="On Deck sessions view" class="case-card__img">
+              <figcaption>Sessions</figcaption>
+            </figure>
+            <figure class="cs-figure">
+              <img src="OD-Playlists.png" alt="On Deck playlists view" class="case-card__img">
+              <figcaption>Playlists</figcaption>
+            </figure>
+          </div>
+
+          <div class="stat-bar" style="grid-template-columns: repeat(3, 1fr); margin-top: var(--s-6);">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">3</span>
+              <span class="stat-bar__label">New profile features: activity feed, sessions, playlists</span>
+            </div>
+            <div class="stat-bar__item stat-bar__item--hide-mobile">
+              <span class="stat-bar__num t-heading">2</span>
+              <span class="stat-bar__label">Research inputs: Mixpanel data + user interviews</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">100k+</span>
+              <span class="stat-bar__label">Members on the redesigned page</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Upgrade flow -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Migrating 100k members without breaking trust.</h2>
+          <p>A redesigned profile is only as good as the data behind it — rapid growth and multiple rounds of onboarding
+            iteration had left the underlying data fragmented. Profiles held different fields and different depths
+            depending on when a member had joined — some were rich and complete, others near-empty.</p>
+          <p>We developed a segmented upgrade flow based on three factors: the depth of information already held in a
+            member's profile, their level of platform engagement, and how recently their profile had been updated. These
+            three signals divided the user base into cohorts, each receiving a tailored experience — different outreach
+            channels, different incentives, and a different set of steps to complete.</p>
+
+          <figure class="cs-figure">
+            <img src="OD-Segment-B.png" alt="On Deck upgrade flow segment B" class="case-card__img">
+            <figcaption>The tailored upgrade experience for Segment B — prompts and steps adapted to profile depth and engagement level.</figcaption>
+          </figure>
+
+          <figure class="cs-figure">
+            <img src="OD-Update-Flow.png" alt="On Deck segmented upgrade flow" class="case-card__img">
+            <figcaption>The segmented upgrade flow, showing the tailored steps for each user cohort.</figcaption>
+          </figure>
+
+          <p>For highly engaged members with rich profiles, the ask was light: a short confirmation and a few additions.
+            For members with sparse data and low engagement, the approach was softer — email outreach, gentler prompts,
+            and clear framing around the value of a complete profile. A lot of the design work in this phase was
+            sequencing and copywriting as much as it was UI.</p>
+
+          <div class="stat-bar" style="grid-template-columns: repeat(2, 1fr); margin-top: var(--s-6);">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">3</span>
+              <span class="stat-bar__label">Factors in the segmentation model</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">3</span>
+              <span class="stat-bar__label">Tailored upgrade experiences per cohort</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js?v=2"></script>
+  <footer class="site-footer">© Victoria Fox</footer>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Translucent — Victoria Fox</title>
+  <meta name="description" content="Zero to one: designing and shipping a fintech suite from scratch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+  <style>
+    @font-face {
+      font-family: 'Roslindale Display';
+      src: url('RoslindaleVariable-VF[Display]-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=14" />
+</head>
+
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Victoria Fox — back to home">VF</a>
+      <div class="nav__right">
+        <a href="mailto:vickyloufox@gmail.com" class="nav__link" data-copy-email>Email</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title + tags -->
+  <section class="section section--sl" style="padding-bottom:0">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label">
+          <a href="index.html#work" class="cs-back">← Work</a>
+        </div>
+        <div class="sl__body">
+          <div class="cs-tags">
+            <span class="wtag wtag--sector">Fintech</span><span class="wtag wtag--zero-to-one">0→1</span><span
+              class="wtag wtag--web">Web</span><span class="wtag wtag--b2b">B2B SaaS</span>
+          </div>
+          <h1 class="cs-title t-title">Zero to one: designing and shipping a fintech suite from scratch.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover image -->
+  <div class="cs-cover">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label"></div>
+        <div class="sl__body">
+          <div class="cs-cover__img">
+            <img src="Cover-Translucent-Lg.jpg" alt="Translucent product suite" class="case-card__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview + Stats -->
+  <section class="section section--sl" style="padding-top:var(--s-6)">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <p class="about__lead">Translucent was building intercompany accounting software — a category with no
+            established UX playbook. Finance teams were managing complex multi-entity, multi-currency transactions
+            across disparate systems, reconciling them by hand in spreadsheets. I joined as founding designer and over
+            15 months built the brand, the product, and the design system that underpinned it all. The scope was total.
+          </p>
+          <div class="stat-bar"
+            style="margin-top:var(--s-7); grid-template-columns: repeat(3, auto); justify-content: start">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">15 mo</span>
+              <span class="stat-bar__label">As founding<br>designer</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">4</span>
+              <span class="stat-bar__label">Apps built</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">50+</span>
+              <span class="stat-bar__label">User<br>interviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Research -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Research in uncharted territory.</h2>
+          <p>There were no reference products to look at. Intercompany accounting is a specialist corner of finance that
+            most software hasn't touched with real depth. I ran 1:1 sessions directly with the finance professionals who
+            would use the product — accountants who understood the complexities of multi-entity accounting in a way that
+            I didn't. What did their actual workflow look like, where were the failure points? I began with first
+            principles and designed from there.</p>
+
+          <figure class="cs-figure">
+            <img src="TL-Research.png" alt="Customer interview session — Translucent user research"
+              class="case-card__img">
+            <figcaption>A customer interview session, with AI-generated summary. The research surfaced themes that no
+              existing tool addressed.</figcaption>
+          </figure>
+
+          <p>What emerged was a picture of significant cognitive load. Users were toggling between four or more
+            accounting systems — Xero, QuickBooks, Pennylane, MYOB — tracking currencies and exchange rates manually,
+            and generating journal entries through brittle spreadsheet formulas. The design challenge wasn't just UI
+            cleanliness. It was about making a genuinely novel data model legible at a glance, without flattening the
+            complexity that made it useful.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Brand + product -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Brand and product, built in parallel.</h2>
+          <p>With a tight delivery schedule and an engineering team ready to build, brand and product work ran
+            simultaneously. The brand had to feel credible to finance professionals — structured, considered, not flashy
+            — while signalling that this was a new kind of tool in a category that had historically been grim to use.
+          </p>
+
+          <figure class="cs-figure">
+            <img src="TL-Avatars.png" alt="Translucent brand avatar system" class="case-card__img">
+            <figcaption>The brand visual language — a combinatorial system of geometric shapes serving as entity
+              identifiers across the product. Each connected accounting source gets a distinct but coherent identity.
+              Clean, systematic, scalable.</figcaption>
+          </figure>
+
+          <p>With a tight delivery schedule and an engineering team ready to build, brand and product work ran
+            simultaneously. The product itself required designing for high-density structured data — entities, accounts,
+            currencies,
+            exchange rates, debit/credit columns — without losing legibility.
+          </p>
+
+          <figure class="cs-figure">
+            <img src="TL-001-AP.png" alt="Translucent accounts payable transaction view" class="case-card__img">
+            <figcaption>The multi-entity search view — pulling transactions from four source systems into a single
+              coherent interface.</figcaption>
+          </figure>
+
+          <figure class="cs-figure">
+            <img src="TL-Journals%20%E2%80%93%20Draft.png" alt="Translucent journal creation flow"
+              class="case-card__img">
+            <figcaption>The "Create a run" journal flow — 40 journals, 20 entities, multiple currencies, a single post
+              action. Designing this required understanding double-entry accounting well enough to know what information
+              users needed to verify before committing.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Design system -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">A system built to move fast.</h2>
+          <p>Speed was non-negotiable. That meant the design system had to be built right from the start, not
+            retrofitted later. I was a strong advocate for tokens and worked closely with the engineering team to
+            establish a shared token language — colour,
+            spacing, typography, and component states defined once and referenced everywhere. This way, the system
+            scaled
+            as the product grew rather than fragmenting under it.</p>
+
+          <figure class="cs-figure">
+            <img src="TL-001-AP-Dark.png" alt="Translucent accounts payable — dark mode" class="case-card__img">
+            <figcaption>Dark mode made possible quickly and easily thanks to the shared token system.</figcaption>
+          </figure>
+
+          <p>The data grid had to handle text, numbers, actions, badges, inline editing, and error states across
+            editable and read-only contexts. Getting the foundations right early meant the other apps could be built
+            with increasing speed.</p>
+
+          <figure class="cs-figure">
+            <img src="TL-component-documentation.png" alt="Translucent data grid component documentation"
+              class="case-card__img">
+            <figcaption>Component documentation for the data grid — the most complex component in the suite, appearing
+              in almost every screen. Every variant, state, and edge case specced. Built once, reused
+              everywhere.</figcaption>
+          </figure>
+
+          <p>Fifteen months. Brand, research, product, and system — built from nothing, shipped and in use. The work
+            was demanding and novel: no tech, no product, no design templates to follow, no incumbents to learn from.
+            Just a domain crying out for better user experience, and a team willing to build it right.</p>
+
+          <div class="stat-bar"
+            style="margin-top:var(--s-7); grid-template-columns: repeat(3, auto); justify-content: start">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">15 mo</span>
+              <span class="stat-bar__label">As founding<br>designer</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">4</span>
+              <span class="stat-bar__label">Apps built</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">50+</span>
+              <span class="stat-bar__label">User<br>interviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js?v=2"></script>
+  <footer class="site-footer">© Victoria Fox</footer>
+</body>
+
+</html>

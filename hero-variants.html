@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victoria Fox — Hero Prototype</title>
+  <style>
+    @font-face {
+      font-family: 'Roslindale';
+      src: url('RoslindaleVariable-VF-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Roslindale Display';
+      src: url('RoslindaleVariable-VF[Display]-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+  </style>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: #F0EBE1; }
+    :root { --text-color: #EDE8DC; }
+
+    .stage {
+      position: fixed;
+      inset: 32px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .letter {
+      font-family: 'Roslindale Display', serif;
+      color: var(--text-color);
+      display: inline-block;
+      white-space: pre;
+      letter-spacing: 0.01em;
+    }
+
+    .name-wrap {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stage" id="stage"></div>
+
+<script>
+const TEXT         = 'Victoria Fox';
+const SCROLL_RANGE = 1400;
+
+const PALETTES = [
+  { bg: '#039F6E', text: '#EDE8DC' },
+  { bg: '#FF3B0C', text: '#FDBB00' },
+  { bg: '#FDD8D2', text: '#FF3B0C' },
+  { bg: '#FFFF9B', text: '#FB6124' },
+  { bg: '#F6FFFB', text: '#6BFD00' },
+  { bg: '#FFF8FF', text: '#F200FF' },
+];
+const PALETTE = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+
+function rand(a, b) { return a + Math.random() * (b - a); }
+function randInt(a, b) { return Math.round(rand(a, b)); }
+function lerp(a, b, t) { return a + (b - a) * t; }
+function easeOut(v) { return 1 - Math.pow(1 - v, 2.5); }
+
+// ── Make page scrollable ──────────────────────────────────────
+const spacer = document.createElement('div');
+spacer.style.cssText = 'height:400vh;width:1px;position:absolute;top:0;left:0;pointer-events:none;';
+document.body.appendChild(spacer);
+document.documentElement.style.height = 'auto';
+document.documentElement.style.overflowY = 'scroll';
+
+// ── Apply palette ─────────────────────────────────────────────
+const stage = document.getElementById('stage');
+stage.style.background = PALETTE.bg;
+document.documentElement.style.setProperty('--text-color', PALETTE.text);
+
+// BASE_PX derived from stage width so scatter coords stay inside the frame
+const BASE_PX = 0.11 * stage.clientWidth;
+
+const wrap = document.createElement('div');
+wrap.classList.add('name-wrap');
+stage.appendChild(wrap);
+const letters = TEXT.split('').map(char => {
+  const s = document.createElement('span');
+  s.classList.add('letter');
+  s.textContent = char === ' ' ? ' ' : char;
+  wrap.appendChild(s);
+  return s;
+});
+letters.forEach(l => {
+  l.style.fontSize = BASE_PX + 'px';
+  l.style.fontVariationSettings = "'wght' 700, 'wdth' 75";
+  l.style.opacity = '1';
+});
+
+// ── Measure home positions, pin inside stage (absolute so overflow:hidden clips them) ──
+document.body.offsetHeight;
+const homeRects = (() => {
+  const stageRect = stage.getBoundingClientRect();
+  const rects = letters.map(l => l.getBoundingClientRect());
+  letters.forEach((l, i) => {
+    const r = rects[i];
+    l.style.transition = 'none';
+    l.style.position = 'absolute';
+    l.style.left = (r.left - stageRect.left) + 'px';
+    l.style.top  = (r.top  - stageRect.top)  + 'px';
+    l.style.margin = '0';
+  });
+  document.body.offsetHeight;
+  letters.forEach(l => stage.appendChild(l));
+  wrap.remove();
+  // Return stage-relative rects
+  return rects.map(r => ({
+    left: r.left - stageRect.left,
+    top:  r.top  - stageRect.top,
+    width: r.width,
+    height: r.height,
+  }));
+})();
+
+// ── Generate non-overlapping scatter positions ───────────────
+// Each letter is treated as a circle (radius ∝ font size) so
+// collision detection works regardless of rotation angle.
+function makeTargets() {
+  const placed = []; // { cx, cy, r } of confirmed positions
+  const GAP = 20;    // minimum px between letter edges
+
+  const sw = stage.clientWidth;
+  const sh = stage.clientHeight;
+  const minX = 0.04 * sw;
+  const maxX = 0.88 * sw;
+  const minY = 0.04 * sh;
+  const maxY = 0.88 * sh;
+
+  return letters.map(l => {
+    const isSpace = l.textContent === ' ';
+    const size = rand(6, 18) * sw / 100;
+    const r = size * 0.6; // generous radius covering the glyph at any rotation
+
+    let left = rand(minX, maxX);
+    let top  = rand(minY, maxY);
+
+    if (!isSpace) {
+      // Centre of the letter (approximate: left + ~0.35em, top + ~0.5em)
+      let cx, cy, ok;
+      for (let attempt = 0; attempt < 500; attempt++) {
+        left = rand(minX, maxX);
+        top  = rand(minY, maxY);
+        cx = left + size * 0.35;
+        cy = top  + size * 0.50;
+        ok = placed.every(p => Math.hypot(cx - p.cx, cy - p.cy) >= r + p.r + GAP);
+        if (ok) break;
+      }
+      placed.push({ cx: left + size * 0.35, cy: top + size * 0.50, r });
+    }
+
+    return { left, top, size, rot: rand(-180, 180), wght: randInt(100, 900), wdth: rand(75, 100) };
+  });
+}
+
+let scatterTargets = makeTargets();
+
+// Place letters at scattered positions immediately
+letters.forEach((l, i) => {
+  const s = scatterTargets[i];
+  l.style.left      = s.left + 'px';
+  l.style.top       = s.top  + 'px';
+  l.style.fontSize  = s.size + 'px';
+  l.style.transform = `rotate(${s.rot}deg)`;
+  l.style.fontVariationSettings = `'wght' ${s.wght}, 'wdth' ${s.wdth.toFixed(1)}`;
+});
+
+// ── Static assembled text (shown at end of scroll) ───────────
+const staticText = document.createElement('p');
+Object.assign(staticText.style, {
+  position: 'absolute',
+  left: '50%',
+  top: '50%',
+  transform: 'translate(-50%, -50%)',
+  fontFamily: "'Roslindale Display', serif",
+  fontSize: BASE_PX + 'px',
+  fontVariationSettings: "'wght' 700, 'wdth' 75",
+  color: PALETTE.text,
+  whiteSpace: 'nowrap',
+  letterSpacing: '0.01em', // ← tune this value
+  opacity: '0',
+  pointerEvents: 'none',
+});
+staticText.textContent = TEXT;
+stage.appendChild(staticText);
+
+// ── Per-letter wibble parameters (randomised once) ───────────
+const wibble = letters.map(() => ({
+  fRot: rand(0.3, 0.7),  phRot: rand(0, Math.PI * 2),  aRot: rand(12, 28),
+  fX:   rand(0.2, 0.5),  phX:   rand(0, Math.PI * 2),  aX:   rand(5, 12),
+  fY:   rand(0.25, 0.55),phY:   rand(0, Math.PI * 2),  aY:   rand(5, 12),
+}));
+
+// ── Scroll-driven assembly ────────────────────────────────────
+let prevP = 0;
+const SWAP_THRESHOLD = 0.92;
+
+function tick() {
+  const p = easeOut(Math.min(1, window.scrollY / SCROLL_RANGE));
+  const t = performance.now() / 1000;
+
+  if (prevP > 0.02 && p < 0.02) scatterTargets = makeTargets();
+  prevP = p;
+
+  if (p >= SWAP_THRESHOLD) {
+    letters.forEach(l => { l.style.opacity = '0'; });
+    staticText.style.opacity = '1';
+  } else {
+    staticText.style.opacity = '0';
+    // Wibble fades out as letters assemble
+    const wibbleAmt = Math.max(0, 1 - p * 2.5);
+    letters.forEach((l, i) => {
+      const s = scatterTargets[i];
+      const h = homeRects[i];
+      const w = wibble[i];
+      const wobbleX   = Math.sin(t * w.fX   + w.phX)   * w.aX   * wibbleAmt;
+      const wobbleY   = Math.sin(t * w.fY   + w.phY)   * w.aY   * wibbleAmt;
+      const wobbleRot = Math.sin(t * w.fRot + w.phRot) * w.aRot * wibbleAmt;
+      l.style.opacity   = '1';
+      l.style.left      = (lerp(s.left, h.left, p) + wobbleX) + 'px';
+      l.style.top       = (lerp(s.top,  h.top,  p) + wobbleY) + 'px';
+      l.style.fontSize  = lerp(s.size, BASE_PX, p) + 'px';
+      l.style.transform = `rotate(${lerp(s.rot, 0, p) + wobbleRot}deg)`;
+      l.style.fontVariationSettings = `'wght' ${Math.round(lerp(s.wght, 700, p))}, 'wdth' ${lerp(s.wdth, 75, p).toFixed(1)}`;
+    });
+  }
+
+  requestAnimationFrame(tick);
+}
+
+const hint = { style: {} }; // stub — hint removed but tick() still references it
+
+tick();
+</script>
+</body>
+</html>

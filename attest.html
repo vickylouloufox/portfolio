@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attest — Victoria Fox</title>
+  <meta name="description" content="Fixing design debt: rebuilding Attest's core product flow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+  <style>
+    @font-face {
+      font-family: 'Roslindale Display';
+      src: url('RoslindaleVariable-VF[Display]-Testing.ttf') format('truetype');
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=14" />
+</head>
+
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Victoria Fox — back to home">VF</a>
+      <div class="nav__right">
+        <a href="mailto:vickyloufox@gmail.com" class="nav__link" data-copy-email>Email</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title + tags -->
+  <section class="section section--sl" style="padding-bottom:0">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label">
+          <a href="index.html#work" class="cs-back">← Work</a>
+        </div>
+        <div class="sl__body">
+          <div class="cs-tags">
+            <span class="wtag wtag--sector">Research</span><span class="wtag wtag--growth">Growth</span><span
+              class="wtag wtag--web">Web</span><span class="wtag wtag--b2b">B2B SaaS</span>
+          </div>
+          <h1 class="cs-title t-title">Redesigning Attest's core product flow — and building the team to own it.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover image -->
+  <div class="cs-cover">
+    <div class="container">
+      <div class="sl">
+        <div class="sl__label"></div>
+        <div class="sl__body">
+          <div class="cs-cover__img">
+            <img src="Attest_Cover-Wide.jpg" alt="Attest survey builder UI" class="case-card__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview + Stats -->
+  <section class="section section--sl" style="padding-top:var(--s-6)">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <p class="about__lead">Attest was building traction as a B2B consumer research platform when design debt
+            caught up with its core product. The survvey creation flow had been extended month by month – each new
+            capability had been grafted on, and
+            the result was a flow that was disjointed and difficult to learn.</p>
+          <p>I joined as a freelance Product Design Lead with two mandates: rebuild the survey creation experience from
+            the research up, and build the design function from scratch alongside it. Over six months I hired three
+            designers, established working processes, and delivered a redesigned core flow — one that could accommodate
+            new capabilities far more gracefully.</p>
+          <div class="stat-bar"
+            style="margin-top:var(--s-7); grid-template-columns: repeat(2, auto); justify-content: start">
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">3</span>
+              <span class="stat-bar__label">Designers hired<br>and onboarded</span>
+            </div>
+            <div class="stat-bar__item">
+              <span class="stat-bar__num t-heading">6 mo</span>
+              <span class="stat-bar__label">Freelance<br>engagement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1 -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Understanding the problem.</h2>
+          <p>I started with data. Session recordings from FullStory and activity data from Mixpanel showed a friction
+            point just as people started to create a survey. Out top users were markting (49%) and founders (28%) –
+            people without deep fluency in survey methodology or the tooling itself.
+          </p>
+
+          <p>However the most revealing insight didn't come from the analytics at all. It came from people's own survey
+            drafts —
+            I sourced these from clients directly. What emerged was a picture of three genuinely different cognitive
+            approaches to the same task.</p>
+
+          <figure class="cs-figure">
+            <img src="Attest-PurchaseResearch-15.jpg" alt="Anatomy of a typical survey draft" class="case-card__img">
+            <figcaption>Mapping how people actually draft surveys revealed three distinct mental models.</figcaption>
+          </figure>
+
+          <figure class="cs-figure">
+            <img src="Attest-PurchaseResearch-11.jpg" alt="Common survey draft patterns" class="case-card__img">
+            <figcaption>The variety of draft patterns in the system — each a window into a different way of thinking
+              about the task.</figcaption>
+          </figure>
+
+          <p>That shifted the design question entirely. This wasn't a UI cleanup problem — it was a mental model
+            problem. How do you design a single interface that works for people who are conceptualising the same task in
+            fundamentally different ways?</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="section section--cs">
+    <div class="container">
+      <div class="sl">
+        <span class="sl__label"></span>
+        <div class="sl__body cs-body">
+          <h2 class="cs-section-title t-heading">Designing for different mental models.</h2>
+          <p>I prototyped in Origami Studio — Facebook's recently released interaction design tool. The survey creation
+            flow was complex and multimodal enough that static screens simply couldn't test it — users needed to
+            actually move through the states, switch between modes, and experience the branching logic responding to
+            their input.</p>
+
+          <figure class="cs-figure">
+            <img src="Attest-RoutingView02e.png" alt="Attest routing view wireframe" class="case-card__img">
+            <figcaption>The Route view — each question could trigger a different path based on the respondent's answer,
+              all configurable within a single diagram. Managing logic of this complexity made high-fidelity prototyping
+              a necessity, not a choice.</figcaption>
+          </figure>
+
+          <figure class="cs-figure">
+            <video src="Attest-proto.mp4" autoplay loop muted playsinline class="case-card__img"></video>
+            <figcaption>Prototype built in Origami Studio — high enough fidelity to test conditional routing with real
+              users. The outcome was a flexible interface flow that accommodated different mental
+              models. Users could switch between two views depending on whether they wanted to build structurally or
+              linearly. </figcaption>
+          </figure>
+
+          <figure class="cs-figure">
+            <img src="Attest-07.jpg" alt="Attest survey creation flow redesign" class="case-card__img">
+            <figcaption>The redesigned survey creation flow — questions, answer logic, audience targeting, and
+              conditional routing, reconsidered as a coherent whole.</figcaption>
+          </figure>
+          <p>The redesign gave the product team something they hadn't had before: a core flow they could build on rather
+            than around. New features could be introduced without structural compromise, and the design function I'd
+            built alongside the work meant there was now a team in place to own that standard going forward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js?v=2"></script>
+  <footer class="site-footer">© Victoria Fox</footer>
+</body>
+
+</html>

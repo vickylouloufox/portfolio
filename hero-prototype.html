@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victoria Fox — Hero Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #039F6E;
+    }
+
+    .hero {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .name-wrap {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .letter {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+      font-variation-settings: 'wght' 300, 'opsz' 32;
+      color: #EDE8DC;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+      white-space: pre;
+      letter-spacing: 0.02em;
+    }
+
+    .letter.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .replay {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 1px solid rgba(237, 232, 220, 0.4);
+      color: #EDE8DC;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.4s ease, border-color 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .replay:hover {
+      border-color: rgba(237, 232, 220, 0.8);
+    }
+
+    .replay.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="name-wrap" id="nameWrap"></div>
+  </div>
+  <button class="replay" id="replayBtn">Replay</button>
+
+  <script>
+    const text = 'Victoria Fox';
+    const wrap = document.getElementById('nameWrap');
+    const replayBtn = document.getElementById('replayBtn');
+
+    let scatterTimer = null;
+
+    function build() {
+      wrap.innerHTML = '';
+      text.split('').forEach((char) => {
+        const span = document.createElement('span');
+        span.classList.add('letter');
+        span.textContent = char === ' ' ? ' ' : char;
+        wrap.appendChild(span);
+      });
+    }
+
+    function reveal() {
+      const letters = [...document.querySelectorAll('.letter')];
+      letters.forEach((letter, i) => {
+        setTimeout(() => {
+          letter.classList.add('revealed');
+        }, 300 + i * 80);
+      });
+
+      // Scatter fires after reveal completes + a pause to let it sit
+      const afterReveal = 300 + (letters.length - 1) * 80 + 1000;
+      scatterTimer = setTimeout(scatter, afterReveal);
+    }
+
+    function scatter() {
+      const letters = [...document.querySelectorAll('.letter')];
+
+      // Snapshot positions before touching anything
+      const rects = letters.map(l => l.getBoundingClientRect());
+
+      // Pin each letter at its current screen position, removing it from flow
+      letters.forEach((letter, i) => {
+        const r = rects[i];
+        letter.style.position = 'fixed';
+        letter.style.left = r.left + 'px';
+        letter.style.top = r.top + 'px';
+        letter.style.margin = '0';
+        letter.style.transition = 'none';
+        letter.offsetHeight; // force reflow so position is applied before transitions kick in
+      });
+
+      // Animate each letter to a random scattered state
+      letters.forEach((letter, i) => {
+        const targetLeft   = lerp(0.04, 0.82, rand()) * window.innerWidth;
+        const targetTop    = lerp(0.04, 0.82, rand()) * window.innerHeight;
+        const targetRotate = (rand() - 0.5) * 360;
+        const targetSize   = lerp(7, 22, rand());
+        const targetWeight = Math.round(lerp(100, 900, rand()));
+        const targetOpsz   = lerp(9, 40, rand());
+
+        // Slowed down vs reference — ~3s move, weight morphing extends a bit longer
+        const moveDur   = 2800 + rand() * 600;  // ms
+        const morphDur  = moveDur * 1.4;
+
+        setTimeout(() => {
+          letter.style.transition = [
+            `left ${moveDur}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+            `top ${moveDur}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+            `font-size ${moveDur}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+            `transform ${moveDur}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+            `font-variation-settings ${morphDur}ms ease-in-out`,
+          ].join(', ');
+
+          letter.style.left = targetLeft + 'px';
+          letter.style.top = targetTop + 'px';
+          letter.style.fontSize = targetSize + 'vw';
+          letter.style.transform = `rotate(${targetRotate}deg)`;
+          letter.style.fontVariationSettings = `'wght' ${targetWeight}, 'opsz' ${targetOpsz}`;
+        }, i * 60);
+      });
+
+      // Show replay button once scatter is well underway
+      setTimeout(() => replayBtn.classList.add('visible'), 2000);
+    }
+
+    function replay() {
+      clearTimeout(scatterTimer);
+      replayBtn.classList.remove('visible');
+      build();
+      // tiny delay so the DOM has rebuilt before we start animating
+      setTimeout(reveal, 80);
+    }
+
+    function lerp(min, max, t) { return min + (max - min) * t; }
+    function rand() { return Math.random(); }
+
+    replayBtn.addEventListener('click', replay);
+
+    // Kick off on load
+    build();
+    reveal();
+  </script>
+</body>
+</html>
