@@ -286,13 +286,12 @@
         const y = e.clientY;
         toast.style.left = x + 'px';
         toast.style.top  = (y - 44) + 'px';
-        // Clamp to viewport so it never clips off the right edge
         requestAnimationFrame(() => {
           const rect = toast.getBoundingClientRect();
-          if (rect.right > window.innerWidth - 12) {
+          if (rect.right > window.innerWidth - 12)
             toast.style.left = (window.innerWidth - rect.width - 12) + 'px';
-          }
           if (rect.left < 12) toast.style.left = '12px';
+          if (rect.top < 12) toast.style.top = (y + 16) + 'px';
         });
         toast.classList.add('is-visible');
         clearTimeout(toastTimer);
