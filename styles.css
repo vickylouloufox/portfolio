@@ -716,7 +716,9 @@ h1, h2, h3, h4 {
   margin-bottom: var(--s-6);
 }
 .work-key .wtag { cursor: pointer; transition: background 180ms, opacity 180ms, color 180ms, border-color 180ms; }
-.work-key .wtag:hover { color: var(--accent); border-color: var(--accent); }
+@media (hover: hover) {
+  .work-key .wtag:hover { color: var(--accent); border-color: var(--accent); }
+}
 .work-key.has-active .wtag:not(.is-active) { opacity: 0.35; }
 .work-key .wtag.is-active {
   color: var(--accent);
@@ -930,7 +932,10 @@ h1, h2, h3, h4 {
   transition: background 200ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
   flex-shrink: 0;
 }
-.rec-controls__btn:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+@media (hover: hover) {
+  .rec-controls__btn:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+}
+.rec-controls__btn:active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .rec-controls__btn:disabled { opacity: 0.3; cursor: default; }
 
 /* ---------- Skills ---------- */

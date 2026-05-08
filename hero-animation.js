@@ -1,5 +1,4 @@
 (function () {
-  const TEXT         = 'Victoria Fox';
   const SCROLL_RANGE = 1400;
 
   const _css = getComputedStyle(document.documentElement);
@@ -33,6 +32,9 @@
   // Defer to next frame so layout is fully computed before we measure
   requestAnimationFrame(function () {
 
+    const isMobile = stage.clientWidth < 600;
+    const TEXT     = isMobile ? 'Victoria\nFox' : 'Victoria Fox';
+
     // ── Static text is the source of truth for position + size ───
     // We render it invisibly first, measure it, then use those
     // positions as the home targets for the animated letter spans.
@@ -43,12 +45,13 @@
       top:                  '50%',
       transform:            'translate(-50%, -50%)',
       fontFamily:           "'Roslindale Display', serif",
-      fontSize:             Math.min(0.11 * stage.clientWidth, 150) + 'px',
+      fontSize:             Math.min((isMobile ? 0.16 : 0.11) * stage.clientWidth, 150) + 'px',
       fontVariationSettings:"'wght' 700, 'wdth' 75",
       color:                PALETTE.text,
-      whiteSpace:           'nowrap',
+      whiteSpace:           isMobile ? 'pre' : 'nowrap',
       letterSpacing:        '0.01em',
-      lineHeight:           '1',
+      lineHeight:           '1.05',
+      textAlign:            'center',
       opacity:              '0',
       pointerEvents:        'none',
     });
@@ -93,6 +96,7 @@
         lineHeight:           '1',
       });
       s.textContent = char === ' ' ? ' ' : char;
+      if (char === '\n') s.style.opacity = '0';
       stage.appendChild(s);
       return s;
     });
@@ -150,7 +154,7 @@
         spring[i].active   = true;
         spring[i].scale    = 0;
         spring[i].vel      = 0;
-        l.style.opacity    = '1';
+        l.style.opacity    = TEXT[i] === '\n' ? '0' : '1';
       }, rand(0, 900));
     });
 
@@ -197,7 +201,7 @@
           const wobbleX   = Math.sin(t * w.fX   + w.phX)   * w.aX   * wibbleAmt;
           const wobbleY   = Math.sin(t * w.fY   + w.phY)   * w.aY   * wibbleAmt;
           const wobbleRot = Math.sin(t * w.fRot + w.phRot) * w.aRot * wibbleAmt;
-          if (popped[i]) l.style.opacity = '1';
+          if (popped[i]) l.style.opacity = TEXT[i] === '\n' ? '0' : '1';
           l.style.left      = (lerp(s.left, h.left, p) + wobbleX) + 'px';
           l.style.top       = (lerp(s.top,  h.top,  p) + wobbleY) + 'px';
           l.style.fontSize  = lerp(s.size, BASE_PX, p) + 'px';
