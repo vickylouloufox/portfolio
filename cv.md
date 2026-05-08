@@ -14,7 +14,7 @@ Fast-paced and chaotic doesn't phase me — in fact it's the environment in whic
 
 ## Credentials
 
-- 11+ years experience in UI Design
+- 12+ years experience in UI Design
 - 9+ years experience in end-to-end Product Design
 - 2+ years experience in Design Leadership (cumulative across roles)
 - Web & mobile design (Android & iOS)
@@ -56,7 +56,7 @@ Led a team of 5 designers for this startup community/education platform. Project
 
 ---
 
-### Adia — Freelance Product Designer
+### Parla — Freelance Product Designer
 **Jun 2019 – Apr 2020** · 11 mo · London
 
 ---
@@ -156,13 +156,21 @@ Picture Editor, Picture Researcher, and Author across:
 
 ---
 
-## Education
+## Education & Professional Courses
+
+### Degrees
 
 | Institution | Qualification | Years |
 |---|---|---|
-| Ravensbourne College of Design and Communication | MA, Communication Design · 1st | 2010–2011 |
+| Ravensbourne College of Design and Communication | MA, Communication Design · Distinction | 2010–2011 |
 | University of the Arts London (Central St Martins) | BA, Art & Design · 2:1 | 2000–2003 |
 | The Emmbrook School, Wokingham | | 1991–1998 |
+
+### Professional Courses
+
+- Figma Academy 2.0 · 2024
+- Product Psychology Masterclass · Growth.design · 2023
+- On Deck Design Fellowship: Design Management · On Deck · 2022
 
 ---
 

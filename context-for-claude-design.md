@@ -122,7 +122,7 @@ Numbered rows (not cards), labelled "Skills".
 | 06 | Taste & Craft | A consistent, considered point of view — at speed. |
 
 **Tools logo row** (SVG icons + label, class `logo-row`):
-Claude · Cursor · Figma · GitHub · NotebookLM · PostHog · Dovetail
+Claude · Antigravity · Cursor · Figma · GitHub · NotebookLM · Dovetail
 
 Full skill descriptions and tools list in [skills.md](skills.md).
 
