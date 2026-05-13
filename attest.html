@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💣</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💣</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Attest — Victoria Fox</title>
   <meta name="description" content="Fixing design debt: rebuilding Attest's core product flow." />
@@ -72,9 +73,9 @@
         <span class="sl__label"></span>
         <div class="sl__body cs-body">
           <p class="about__lead">Attest was building traction as a B2B consumer research platform when design debt
-            caught up with its core product. The survvey creation flow had been extended month by month – each new
+            caught up with its core product. The survey creation flow had been extended month by month – each new
             capability had been grafted on, and
-            the result was a flow that was disjointed and difficult to learn.</p>
+            the result was a flow that was disjointed and difficult to navigate.</p>
           <p>I joined as a freelance Product Design Lead with two mandates: rebuild the survey creation experience from
             the research up, and build the design function from scratch alongside it. Over six months I hired three
             designers, established working processes, and delivered a redesigned core flow — one that could accommodate
@@ -103,7 +104,7 @@
         <div class="sl__body cs-body">
           <h2 class="cs-section-title t-heading">Understanding the problem.</h2>
           <p>I started with data. Session recordings from FullStory and activity data from Mixpanel showed a friction
-            point just as people started to create a survey. Out top users were markting (49%) and founders (28%) –
+            point just as people started to create a survey. Out top users were marketing (49%) and founders (28%) –
             people without deep fluency in survey methodology or the tooling itself.
           </p>
 
@@ -123,7 +124,7 @@
               about the task.</figcaption>
           </figure>
 
-          <p>That shifted the design question entirely. This wasn't a UI cleanup problem — it was a mental model
+          <p>That shifted the design question entirely to a mental model
             problem. How do you design a single interface that works for people who are conceptualising the same task in
             fundamentally different ways?</p>
 
@@ -144,11 +145,16 @@
             actually move through the states, switch between modes, and experience the branching logic responding to
             their input.</p>
 
+          <p>The solution was two named views within a single flow. <strong>Compose</strong> was a linear,
+            question-by-question editor — the mode that matched how most users naturally drafted a survey.
+            <strong>Map</strong> was a structural diagram view, showing the full survey as a branching tree with each
+            conditional path visible at once. Users could switch between them freely; the underlying data was consistent
+            across both.</p>
+
           <figure class="cs-figure">
             <img src="Attest-RoutingView02e.png" alt="Attest routing view wireframe" class="case-card__img">
             <figcaption>The Route view — each question could trigger a different path based on the respondent's answer,
-              all configurable within a single diagram. Managing logic of this complexity made high-fidelity prototyping
-              a necessity, not a choice.</figcaption>
+              all configurable within a single diagram.</figcaption>
           </figure>
 
           <figure class="cs-figure">
@@ -164,9 +170,10 @@
             <figcaption>The redesigned survey creation flow — questions, answer logic, audience targeting, and
               conditional routing, reconsidered as a coherent whole.</figcaption>
           </figure>
-          <p>The redesign gave the product team something they hadn't had before: a core flow they could build on rather
-            than around. New features could be introduced without structural compromise, and the design function I'd
-            built alongside the work meant there was now a team in place to own that standard going forward.</p>
+          <p>The two-mode approach — structural and linear — meant that the same tool worked for users with genuinely
+            different cognitive models. New question types and routing logic could be introduced without refactoring the
+            underlying interaction model. And by the end of the engagement I'd hired and onboarded three designers,
+            leaving Attest with a team in place to own it.</p>
         </div>
       </div>
     </div>
@@ -174,7 +181,12 @@
 
   <div class="toast" id="toast">Copied — vickyloufox@gmail.com</div>
   <script src="script.js?v=2"></script>
-  <footer class="site-footer"><div class="site-footer__inner"><span class="site-footer__copy">© Victoria Fox</span><div class="site-footer__links"><a href="mailto:vickyloufox@gmail.com" class="site-footer__link" data-copy-email>Email</a><a href="#" class="site-footer__link">↑ Back to top</a></div></div></footer>
+  <footer class="site-footer">
+    <div class="site-footer__inner"><span class="site-footer__copy">© Victoria Fox</span>
+      <div class="site-footer__links"><a href="mailto:vickyloufox@gmail.com" class="site-footer__link"
+          data-copy-email>Email</a><a href="#" class="site-footer__link">↑ Back to top</a></div>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💣</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💣</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Little Desk — Victoria Fox</title>
   <meta name="description"
@@ -78,12 +79,9 @@
           <p class="about__lead">Little Desk started with a Monday morning observation: my daughter was resistant to her
             weekly spelling homework. So I built her something better — and used it as an excuse to go deep on what it
             actually means to ship an app with AI.</p>
-          <p>The market for children's learning apps is dominated by the Duolingo model: streaks, rewards, loss
-            aversion, progress bars. These mechanics are addictive by design — and for young children, potentially
-            counterproductive. The brief I set myself: an app that is calm, not addictive. One that treats the child as
-            capable rather than in need of reward. And one that keeps pencil to paper — because the act of writing by
-            hand
-            is the point and not something to replace with a touchscreen.</p>
+          <p>The learning curve was real and specific. This project meant working in an IDE for the first time, running
+            commands in terminal, managing git branches, and getting comfortable with vibe coding as a working method..
+          </p>
           <div class="stat-bar" style="margin-top:var(--s-7)">
             <div class="stat-bar__item">
               <span class="stat-bar__num t-heading">6</span>
@@ -114,23 +112,33 @@
         <span class="sl__label"></span>
         <div class="sl__body cs-body">
           <h2 class="cs-section-title t-heading">A different kind of learning app</h2>
-          <p>Three bodies of research shaped my product thinking from the start. 1 – Growth mindset, which says that
-            evaluative feedback actually reduces resilience after errors. 2 - Cognitive
-            load theory proposes that young children have limited working memory and are especially vulnerable to visual
-            noise. 3 - Self-determination theory, which suggests
-            that external pressure shifts motivation from autonomy to compliance.</p>
-
-          <p>A parent survey I ran at the outset confirmed the tension: parents worried equally about
-            screen time and about their children's motivation to learn.
+          <p>A parent survey I ran at the outset made it clear that the difficulties I experienced with my own
+            child were widely shared. 75% said homework brought conflict
+            at home, 88% already had a tablet — yet only 38% felt reassured by the learning apps they
+            were already using.
           </p>
 
           <figure class="cs-figure">
             <img src="ld-survey-findings.png"
               alt="Survey results showing parent responses to questions about homework habits, screen time, and learning apps."
               style="width:100%;display:block;">
-            <figcaption>Parent survey responses, run before building began. Parents worried equally about screen time
+            <figcaption>Parent survey responses, ran before building began. Parents worried equally about screen time
               and about motivation — and most were already using learning apps they weren't happy with.</figcaption>
           </figure>
+          <p>The market for children's learning apps is dominated by the Duolingo model: streaks, rewards, loss
+            aversion, progress bars. These mechanics are addictive by design — and for young children, potentially
+            counterproductive.</p>
+          <p>Three bodies of research informed the design:
+            <a href="https://en.wikipedia.org/wiki/Carol_Dweck" target="_blank" rel="noopener">growth mindset
+              theory</a>,
+            <a href="https://en.wikipedia.org/wiki/Cognitive_load" target="_blank" rel="noopener">cognitive load
+              theory</a>,
+            and <a href="https://en.wikipedia.org/wiki/Self-determination_theory" target="_blank"
+              rel="noopener">self-determination theory</a>.
+            Together they point in the same direction: less evaluation, less noise, less external pressure. The brief I
+            set myself: an app that is calm not addictive, that treats the child as capable rather than in need of
+            reward, and that keeps pencil to paper — because the act of writing by hand is the point.
+          </p>
         </div>
       </div>
     </div>
@@ -144,20 +152,35 @@
         <div class="sl__body cs-body">
           <h2 class="cs-section-title t-heading">Directing AI to build</h2>
           <p>I directed Cursor to write the app in Flutter and embedded my UX principles document directly into Cursor
-            as a rules files, so that every code generation aligned with the overriding design
-            rationale. I also encoded the linguistic rules for phoneme mapping as Cursor rules — so adding new words to
-            the
-            curriculum meant generating the correct grapheme-to-phoneme breakdown automatically.</p>
-          <p>I worked in weekly sprints — one hypothesis per sprint, live testing after each one. I also worked
-            alongside an engineer partner, from whom I learned a significant amount about both the tooling and the
-            process.</p>
-
+            as a rules file, so that every code generation aligned with the overriding design rationale. I also
+            encoded the linguistic rules for phoneme mapping as a skill — so adding new words to the curriculum
+            meant Cursor generated the correct grapheme-to-phoneme breakdown automatically, writing it back to
+            both the Google Sheets lesson plan and the Supabase backend that powers the app.</p>
+          <p>Graphemes are the written units — individual letters or combinations like "sh" or "igh". Phonemes are
+            the sounds they represent. Mapping one to the other is the foundation of phonics-based reading
+            and spelling, and getting it right is what makes the app pedagogically credible rather than just
+            functional.</p>
+          <div class="cs-figure-pair">
+            <figure class="cs-figure">
+              <img src="ld-interface.png" alt="The Little Desk app interface showing a spelling lesson in progress."
+                style="width:100%;display:block;">
+              <figcaption>The app interface — built in Flutter, pulling lesson content from Supabase at
+                runtime.</figcaption>
+            </figure>
+            <figure class="cs-figure">
+              <img src="ld-spreadsheet%20.png"
+                alt="Google Sheets lesson plan spreadsheet showing words with their grapheme and phoneme breakdowns auto-populated."
+                style="width:100%;display:block;">
+              <figcaption>The lesson plan spreadsheet — a human-readable view of the curriculum. The skill writes
+                grapheme and phoneme breakdowns here and syncs them to Supabase simultaneously.</figcaption>
+            </figure>
+          </div>
           <figure class="cs-figure">
-            <img src="ld-dev-setup.png"
-              alt="Split screen showing the Little Desk sign-in screen alongside a terminal running Flutter in debug mode."
+            <img src="ld-skill.png"
+              alt="Cursor IDE showing the phoneme-grapheme mapping skill running, with new spelling words being mapped to their sound breakdowns in real time."
               style="width:100%;display:block;">
-            <figcaption>Early development: the sign-in screen running alongside the Flutter terminal.
-            </figcaption>
+            <figcaption>The phoneme-grapheme mapping skill in action — new words get their breakdown generated
+              automatically, written back to Google Sheets and stored in Supabase in a single step.</figcaption>
           </figure>
         </div>
       </div>
@@ -183,12 +206,6 @@
               judgemental feedback.</figcaption>
           </figure>
 
-          <p>The testing revealed friction points, issues with the pacing, and moments where the
-            child's behaviour diverged from what I'd expected. The value of the sprint structure was in the rhythm — one
-            hypothesis per
-            week, tested under real conditions, revised before the next Monday. "I love doing my spellings now" arrived
-            on day two. That's the signal that made five more weeks of iteration worth it.</p>
-
           <figure class="cs-figure">
             <img src="ld-tablet-photo.png"
               alt="A child sitting on a tiled floor, photographing her handwritten spelling words with a tablet."
@@ -207,7 +224,14 @@
         <span class="sl__label"></span>
         <div class="sl__body cs-body">
           <h2 class="cs-section-title t-heading">The app in use</h2>
-          <div class="cs-figure__placeholder">Video · Coming soon</div>
+          <figure class="cs-figure" style="display:flex; justify-content:center; align-items:center; background:#fff; padding:32px 0; max-width:100%;">
+            <div class="vid-player" id="ldVideo">
+              <video src="ld-live-01.mov" playsinline style="width:480px; max-width:100%; display:block;"></video>
+              <button class="vid-player__play" aria-label="Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+              </button>
+            </div>
+          </figure>
         </div>
       </div>
     </div>
@@ -219,18 +243,20 @@
       <div class="sl">
         <span class="sl__label"></span>
         <div class="sl__body cs-body">
-          <h2 class="cs-section-title t-heading">Live with one user. More coming.</h2>
-          <p>The app has been in weekly use since January 2026. The engagement shift compared to paper-only practice was
-            immediate — "I love doing my spellings now" arrived within 24 hours of first use. Whether that enthusiasm
-            holds over time is what the next phase of testing is for.</p>
+          <h2 class="cs-section-title t-heading">Testing with beta users.</h2>
+          <p>The app has been in weekly use with my daughter since January 2026. The engagement shift was immediate —
+            "I love doing my spellings now" arrived within 24 hours. From the original survey, I identified six
+            families as candidates for the first beta: parents with high homework friction and screen-time concerns who
+            were already open to learning apps. That phase is now underway — widening the user base and running long
+            enough to find out whether the engagement holds.</p>
           <div class="stat-bar" style="grid-template-columns: repeat(2, 1fr); margin-top: var(--s-6);">
             <div class="stat-bar__item">
-              <span class="stat-bar__num t-heading">[X]+</span>
+              <span class="stat-bar__num t-heading">80+</span>
               <span class="stat-bar__label">Words in the curriculum</span>
             </div>
             <div class="stat-bar__item">
-              <span class="stat-bar__num t-heading">Beta</span>
-              <span class="stat-bar__label">Testers · coming soon</span>
+              <span class="stat-bar__num t-heading">6</span>
+              <span class="stat-bar__label">Beta testers</span>
             </div>
           </div>
         </div>
@@ -239,8 +265,25 @@
   </section>
 
   <div class="toast" id="toast">Copied — vickyloufox@gmail.com</div>
+  <script>
+    const player = document.getElementById('ldVideo');
+    const video  = player.querySelector('video');
+    const btn    = player.querySelector('.vid-player__play');
+    function toggle() {
+      if (video.paused) { video.play(); player.classList.add('is-playing'); }
+      else { video.pause(); player.classList.remove('is-playing'); }
+    }
+    btn.addEventListener('click', toggle);
+    video.addEventListener('click', toggle);
+    video.addEventListener('ended', () => player.classList.remove('is-playing'));
+  </script>
   <script src="script.js?v=2"></script>
-  <footer class="site-footer"><div class="site-footer__inner"><span class="site-footer__copy">© Victoria Fox</span><div class="site-footer__links"><a href="mailto:vickyloufox@gmail.com" class="site-footer__link" data-copy-email>Email</a><a href="#" class="site-footer__link">↑ Back to top</a></div></div></footer>
+  <footer class="site-footer">
+    <div class="site-footer__inner"><span class="site-footer__copy">© Victoria Fox</span>
+      <div class="site-footer__links"><a href="mailto:vickyloufox@gmail.com" class="site-footer__link"
+          data-copy-email>Email</a><a href="#" class="site-footer__link">↑ Back to top</a></div>
+    </div>
+  </footer>
 </body>
 
 </html>

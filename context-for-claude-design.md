@@ -99,7 +99,7 @@ Full quotes are in [recommendations.md](recommendations.md).
 | 1 | Little Desk | From idea to launch: designing and shipping a children's learning app with Cursor AI | Education · 0→1 · iOS · B2C | `little-desk.html` |
 | 2 | Translucent | Zero to one: designing and shipping a fintech suite from scratch | Fintech · 0→1 · Web · B2B SaaS | `translucent.html` |
 | 3 | Attest | Fixing design debt: rebuilding Attest's core product flow | Research · Growth · Web · B2B SaaS | `attest.html` |
-| 4 | On Deck | Migrating 100k members: designing a segmented upgrade flow | Community · Growth · Web · B2C | `on-deck.html` |
+| 4 | On Deck | Migrating 10k members: designing a segmented upgrade flow | Community · Growth · Web · B2C | `on-deck.html` |
 | 5 | Bloom & Wild | How research-led design helped Bloom & Wild scale from £4M to £13M | E-commerce · Growth · iOS · Android · B2C | `bloom-wild.html` |
 
 All case study pages are drafts. Full content in [case-studies.md](case-studies.md).

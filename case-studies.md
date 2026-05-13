@@ -28,7 +28,7 @@ Source of truth for case study content. Each entry maps to a card on the index p
 
 ## [On Deck]
 
-- **Headline:** Migrating 100k community members: designing a segmented upgrade flow for On Deck
+- **Headline:** Migrating 10k community members: designing a segmented upgrade flow for On Deck
 - **Company:** On Deck
 - **My role:** Lead Product Designer & Product Design Manager
 - **Year:** 2021–2023
