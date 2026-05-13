@@ -1212,8 +1212,8 @@ h1, h2, h3, h4 {
 .footer__bottom a:hover { color: var(--accent); }
 
 .site-footer {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--accent);
+  color: var(--accent-ink);
   padding: var(--s-6) 0;
   padding-bottom: calc(var(--s-6) + env(safe-area-inset-bottom));
   font-family: var(--font-sans);
@@ -1234,14 +1234,14 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .site-footer__link {
-  color: #000;
+  color: var(--accent-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  transition: color 180ms var(--ease);
+  transition: opacity 180ms var(--ease);
 }
 .site-footer__link:hover {
-  color: var(--accent);
+  opacity: 0.7;
 }
 
 /* ---------- Case study pages ---------- */
