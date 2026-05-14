@@ -21,6 +21,136 @@
     }
   </style>
   <link rel="stylesheet" href="styles.css?v=14" />
+  <style>
+    .img-lockable {
+      position: relative;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+    .img-lockable img {
+      filter: blur(4px);
+      transform: scale(1.01);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .img-lockable.unlocked img {
+      filter: none;
+      transform: scale(1);
+    }
+    .img-lock-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    .img-lockable.unlocked .img-lock-overlay {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .img-lock-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.6em 1.2em;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 99px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+    }
+    .img-lock-btn:hover {
+      background: rgba(255,255,255,1);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.16);
+    }
+    .pw-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+    }
+    .pw-modal[hidden] { display: none; }
+    .pw-modal__box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem 2rem 1.75rem;
+      width: min(360px, 90vw);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+    .pw-modal__title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0 0 0.25rem;
+    }
+    .pw-modal__sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8125rem;
+      color: #888;
+      margin: 0 0 1.25rem;
+    }
+    .pw-modal__input {
+      width: 100%;
+      padding: 0.6em 0.85em;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: #1a1a1a;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .pw-modal__input:focus { border-color: #999; }
+    .pw-modal__input.error { border-color: #c0392b; }
+    .pw-modal__error {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8125rem;
+      color: #c0392b;
+      margin: 0.4rem 0 0;
+      min-height: 1.2em;
+    }
+    .pw-modal__actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+      justify-content: flex-end;
+    }
+    .pw-modal__cancel {
+      padding: 0.55em 1.1em;
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: #666;
+      cursor: pointer;
+    }
+    .pw-modal__submit {
+      padding: 0.55em 1.25em;
+      background: #1a1a1a;
+      border: none;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+    }
+    .pw-modal__submit:hover { background: #333; }
+  </style>
 </head>
 
 <body>
@@ -59,7 +189,15 @@
         <div class="sl__label"></div>
         <div class="sl__body">
           <div class="cs-cover__img">
-            <img src="Cover-Translucent-Lg.jpg" alt="Translucent product suite" class="case-card__img">
+            <div class="img-lockable">
+              <img src="Cover-Translucent-Lg.jpg" alt="Translucent product suite" class="case-card__img">
+              <div class="img-lock-overlay">
+                <button class="img-lock-btn" onclick="showPwModal()">
+                  <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="6.5" width="11" height="8" rx="1.5" stroke="#1a1a1a" stroke-width="1.4"/><path d="M3.5 6.5V4a3 3 0 0 1 6 0v2.5" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  View image
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -151,14 +289,30 @@
           </p>
 
           <figure class="cs-figure">
-            <img src="TL-001-AP.png" alt="Translucent accounts payable transaction view" class="case-card__img">
+            <div class="img-lockable">
+              <img src="TL-001-AP.png" alt="Translucent accounts payable transaction view" class="case-card__img">
+              <div class="img-lock-overlay">
+                <button class="img-lock-btn" onclick="showPwModal()">
+                  <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="6.5" width="11" height="8" rx="1.5" stroke="#1a1a1a" stroke-width="1.4"/><path d="M3.5 6.5V4a3 3 0 0 1 6 0v2.5" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  View image
+                </button>
+              </div>
+            </div>
             <figcaption>The multi-entity search view — pulling transactions from four source systems into a single
               coherent interface.</figcaption>
           </figure>
 
           <figure class="cs-figure">
-            <img src="TL-Journals%20%E2%80%93%20Draft.png" alt="Translucent journal creation flow"
-              class="case-card__img">
+            <div class="img-lockable">
+              <img src="TL-Journals%20%E2%80%93%20Draft.png" alt="Translucent journal creation flow"
+                class="case-card__img">
+              <div class="img-lock-overlay">
+                <button class="img-lock-btn" onclick="showPwModal()">
+                  <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="6.5" width="11" height="8" rx="1.5" stroke="#1a1a1a" stroke-width="1.4"/><path d="M3.5 6.5V4a3 3 0 0 1 6 0v2.5" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  View image
+                </button>
+              </div>
+            </div>
             <figcaption>The "Create a run" journal flow — 40 journals, 20 entities, multiple currencies, a single post
               action. Designing this required understanding double-entry accounting well enough to know what information
               users needed to verify before committing.</figcaption>
@@ -182,7 +336,15 @@
             outset.</p>
 
           <figure class="cs-figure">
-            <img src="TL-001-AP-Dark.png" alt="Translucent accounts payable — dark mode" class="case-card__img">
+            <div class="img-lockable">
+              <img src="TL-001-AP-Dark.png" alt="Translucent accounts payable — dark mode" class="case-card__img">
+              <div class="img-lock-overlay">
+                <button class="img-lock-btn" onclick="showPwModal()">
+                  <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="6.5" width="11" height="8" rx="1.5" stroke="#1a1a1a" stroke-width="1.4"/><path d="M3.5 6.5V4a3 3 0 0 1 6 0v2.5" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  View image
+                </button>
+              </div>
+            </div>
             <figcaption>Dark mode made possible quickly and easily thanks to the shared token system.</figcaption>
           </figure>
 
@@ -191,8 +353,16 @@
             team, was key to shipping fast and avoiding design debt building.</p>
 
           <figure class="cs-figure">
-            <img src="TL-component-documentation.png" alt="Translucent data grid component documentation"
-              class="case-card__img">
+            <div class="img-lockable">
+              <img src="TL-component-documentation.png" alt="Translucent data grid component documentation"
+                class="case-card__img">
+              <div class="img-lock-overlay">
+                <button class="img-lock-btn" onclick="showPwModal()">
+                  <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="6.5" width="11" height="8" rx="1.5" stroke="#1a1a1a" stroke-width="1.4"/><path d="M3.5 6.5V4a3 3 0 0 1 6 0v2.5" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  View image
+                </button>
+              </div>
+            </div>
             <figcaption>Component documentation for the data grid — the most complex component in the suite, appearing
               in almost every screen. Every variant, state, and edge case specced. Built once, reused
               everywhere.</figcaption>
@@ -222,8 +392,74 @@
     </div>
   </section>
 
+  <!-- Password modal -->
+  <div class="pw-modal" id="pw-modal" hidden>
+    <div class="pw-modal__box">
+      <p class="pw-modal__title">Protected images</p>
+      <p class="pw-modal__sub">Enter the password to view the product screenshots.</p>
+      <input class="pw-modal__input" id="pw-input" type="password" placeholder="Password" autocomplete="off">
+      <p class="pw-modal__error" id="pw-error"></p>
+      <div class="pw-modal__actions">
+        <button class="pw-modal__cancel" onclick="closePwModal()">Cancel</button>
+        <button class="pw-modal__submit" onclick="checkPassword()">Unlock</button>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast">Copied — vickyloufox@gmail.com</div>
   <script src="script.js?v=2"></script>
+  <script>
+    (function () {
+      var PW = 'nda';
+      var KEY = 'tl_unlocked';
+
+      function unlockAll() {
+        document.querySelectorAll('.img-lockable').forEach(function (el) {
+          el.classList.add('unlocked');
+        });
+        sessionStorage.setItem(KEY, '1');
+      }
+
+      window.showPwModal = function () {
+        document.getElementById('pw-modal').removeAttribute('hidden');
+        setTimeout(function () { document.getElementById('pw-input').focus(); }, 50);
+      };
+
+      window.closePwModal = function () {
+        document.getElementById('pw-modal').setAttribute('hidden', '');
+        var input = document.getElementById('pw-input');
+        input.value = '';
+        input.classList.remove('error');
+        document.getElementById('pw-error').textContent = '';
+      };
+
+      window.checkPassword = function () {
+        var input = document.getElementById('pw-input');
+        if (input.value === PW) {
+          unlockAll();
+          closePwModal();
+        } else {
+          input.classList.add('error');
+          document.getElementById('pw-error').textContent = 'Incorrect password.';
+          input.select();
+        }
+      };
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePwModal();
+      });
+
+      document.getElementById('pw-input').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') checkPassword();
+      });
+
+      document.getElementById('pw-modal').addEventListener('click', function (e) {
+        if (e.target === this) closePwModal();
+      });
+
+      if (sessionStorage.getItem(KEY) === '1') unlockAll();
+    })();
+  </script>
   <footer class="site-footer">
     <div class="site-footer__inner"><span class="site-footer__copy">© Victoria Fox</span>
       <div class="site-footer__links"><a href="mailto:vickyloufox@gmail.com" class="site-footer__link"
