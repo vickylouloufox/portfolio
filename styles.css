@@ -424,17 +424,18 @@ h1, h2, h3, h4 {
 .nav__link:hover { color: var(--accent); background-size: 0% 1px; }
 
 .nav__link[data-copy-email] {
-  background-image: none;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 250ms var(--ease);
   font-size: var(--fs-body);
   font-weight: 300;
-  color: var(--ink);
+  color: var(--accent);
 }
 .nav__link[data-copy-email]:hover {
-  color: var(--accent);
-  text-decoration: underline;
+  background-size: 100% 1.5px;
 }
 
 .nav__contextual {
@@ -501,20 +502,21 @@ h1, h2, h3, h4 {
 }
 
 .tagline-section {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(60px, 8vw, 100px) 0;
 }
 
 .tagline {
   color: var(--ink);
   padding: 0 clamp(24px, 5vw, 80px);
   text-align: center;
+  margin: 0;
 }
 
 /* ---------- About ---------- */
 
 .about-section {
-  padding: clamp(64px, 8vw, 120px) 0;
-  background: var(--col-brown);
+  padding-top: 0;
+  padding-bottom: clamp(48px, 6vw, 90px);
 }
 
 .about-cols__portrait-img {
@@ -531,7 +533,7 @@ h1, h2, h3, h4 {
 .about-bio p {
   font-family: 'Roslindale Display', serif;
   font-size: clamp(1.6rem, 3.2vw, 2.8rem);
-  font-variation-settings: 'wght' 700, 'wdth' 75;
+  font-variation-settings: 'wght' 400, 'wdth' 75;
   line-height: 1.15;
   letter-spacing: -0.01em;
   color: var(--ink);
@@ -606,14 +608,18 @@ h1, h2, h3, h4 {
   color: var(--ink);
 }
 .about-cols__list a {
+  align-self: flex-start;
   font-size: var(--fs-body);
   font-weight: 300;
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
+  color: var(--accent);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 250ms var(--ease);
 }
-.about-cols__list a:hover { color: var(--accent); }
+.about-cols__list a:hover { background-size: 100% 1.5px; }
 
 @media (max-width: 900px) {
   .about-cols {
@@ -1046,8 +1052,11 @@ h1, h2, h3, h4 {
    <div class="sl"><span class="sl__label">…</span><div class="sl__body"> wrappers.
    ------------------------------------------------ */
 .section--sl {
-  padding-top: clamp(64px, 8vw, 120px);
-  padding-bottom: clamp(64px, 8vw, 120px);
+  padding-top: clamp(48px, 6vw, 90px);
+  padding-bottom: clamp(48px, 6vw, 90px);
+}
+#skills {
+  padding-bottom: 0;
 }
 .section--cs {
   padding-top: clamp(24px, 3vw, 40px);
@@ -1212,9 +1221,9 @@ h1, h2, h3, h4 {
 .footer__bottom a:hover { color: var(--accent); }
 
 .site-footer {
-  background: var(--accent);
-  color: var(--accent-ink);
-  padding: var(--s-6) 0;
+  background: var(--cream);
+  color: var(--ink);
+  padding-top: clamp(60px, 8vw, 100px);
   padding-bottom: calc(var(--s-6) + env(safe-area-inset-bottom));
   font-family: var(--font-sans);
   font-size: var(--fs-body);
@@ -1234,14 +1243,16 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .site-footer__link {
-  color: var(--accent-ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
-  transition: opacity 180ms var(--ease);
+  color: var(--accent);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 250ms var(--ease);
 }
 .site-footer__link:hover {
-  opacity: 0.7;
+  background-size: 100% 1.5px;
 }
 
 /* ---------- Case study pages ---------- */
@@ -1249,16 +1260,18 @@ h1, h2, h3, h4 {
 .cs-back {
   font-size: var(--fs-body);
   font-weight: 300;
-  color: var(--ink);
+  color: var(--accent);
   text-transform: none;
   letter-spacing: 0;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
   display: inline-block;
-  transition: color 180ms var(--ease);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 250ms var(--ease);
 }
-.cs-back:hover { color: var(--accent); }
+.cs-back:hover { background-size: 100% 1.5px; }
 
 .cs-title {
   max-width: 22ch;
