@@ -4,6 +4,18 @@ Source of truth for case study content. Each entry maps to a card on the index p
 
 ---
 
+## [Numan & Parla]
+
+- **Headline:** Two truths at once: designing medical consultations that are also checkouts
+- **Company:** Numan and Parla (then called Adia)
+- **My role:** Freelance Product Designer
+- **Year:** 2019–2020
+- **Tags:** Healthtech · Growth · Web · iOS · B2C
+- **Page:** numan-parla.html
+- **Status:** draft — Numan homepage image added; Numan survey claim in section 2 unverified
+
+---
+
 ## [Bloom & Wild]
 
 - **Headline:** From £4M to £13M: building the design function for Bloom & Wild
