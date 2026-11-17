@@ -44,7 +44,7 @@
       left:                 '50%',
       top:                  '50%',
       transform:            'translate(-50%, -50%)',
-      fontFamily:           "'Roslindale Display', serif",
+      fontFamily:           "'Fraunces', serif",
       fontSize:             Math.min((isMobile ? 0.16 : 0.11) * stage.clientWidth, 150) + 'px',
       fontVariationSettings:"'wght' 700, 'wdth' 75",
       color:                PALETTE.text,
