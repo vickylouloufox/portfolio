@@ -9,7 +9,7 @@
 
 :root {
   /* ---------- Type ---------- */
-  --font-serif: 'Roslindale Display', serif;
+  --font-serif: 'Fraunces', serif;
   --font-sans:  'DM Sans', system-ui, sans-serif;
   --font-mono:  'DM Mono', 'IBM Plex Mono', ui-monospace, monospace;
 
@@ -150,30 +150,30 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-/* ---- Roslindale type tokens ---- */
+/* ---- Display type tokens ---- */
 .t-display {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(48px, 13vw, 102px);
   font-variation-settings: 'wght' 400, 'wdth' 75;
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
 .t-title {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: var(--fs-serif-2);
   font-variation-settings: 'wght' 400, 'wdth' 75;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 .t-heading {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(1.6rem, 3.2vw, 2.8rem);
   font-variation-settings: 'wght' 400, 'wdth' 75;
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
 .t-heading-em {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(1.6rem, 3.2vw, 2.8rem);
   font-variation-settings: 'wght' 700, 'wdth' 75;
   line-height: 1.15;
@@ -494,7 +494,7 @@ h1, h2, h3, h4 {
 }
 
 .hero__letter {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   display: inline-block;
   white-space: pre;
   position: absolute;
@@ -532,7 +532,7 @@ h1, h2, h3, h4 {
   margin-bottom: clamp(48px, 6vw, 80px);
 }
 .about-bio p {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(1.6rem, 3.2vw, 2.8rem);
   font-variation-settings: 'wght' 400, 'wdth' 75;
   line-height: 1.15;
@@ -664,7 +664,7 @@ h1, h2, h3, h4 {
 }
 
 .work-item__name {
-  font-family: 'Roslindale Display', serif;
+  font-family: 'Fraunces', serif;
   font-size: clamp(2.8rem, 5.5vw, 5.5rem);
   font-variation-settings: 'wght' 400, 'wdth' 75;
   line-height: 1.05;
