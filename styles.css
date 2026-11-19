@@ -720,8 +720,18 @@ h1, h2, h3, h4 {
 .work-key {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
   margin-bottom: var(--s-6);
+}
+.work-key__label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+  margin-right: 6px;
 }
 .work-key .wtag { cursor: pointer; transition: background 180ms, opacity 180ms, color 180ms, border-color 180ms; }
 @media (hover: hover) {
